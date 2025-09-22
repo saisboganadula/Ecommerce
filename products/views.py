@@ -5,9 +5,15 @@ from django.shortcuts import render
 
 from django.http import JsonResponse
 
-def HelloView(request):
+from products.models import Product
+
+
+def helloView(request):
     return JsonResponse({'hello': 'world'})
 
-def HelloName(request, username):
+def helloName(request, username):
     print(request.headers)
+    p=Product.objects.all()
+    print(p[0].name)
+
     return JsonResponse({'hello': username})
